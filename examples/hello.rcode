@@ -1,0 +1,4 @@
+; Hello World in RustCode
+PUSH "Hello, World!"
+PRINT
+HALT

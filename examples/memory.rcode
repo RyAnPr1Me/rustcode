@@ -1,0 +1,14 @@
+; Memory operations example
+; Store and load values from memory
+
+PUSH 42
+STORE 0        ; Store 42 at memory address 0
+
+PUSH 100
+STORE 1        ; Store 100 at memory address 1
+
+LOAD 0         ; Load from address 0
+LOAD 1         ; Load from address 1
+ADD            ; Add them
+PRINT          ; Should print 142
+HALT

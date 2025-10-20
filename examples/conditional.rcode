@@ -1,0 +1,14 @@
+; Conditional logic example
+; Compare two numbers and print a message
+
+PUSH 100
+PUSH 50
+GT
+JUMPIFNOT else_branch
+PUSH "100 is greater than 50"
+JUMP end
+else_branch:
+PUSH "100 is not greater than 50"
+end:
+PRINT
+HALT

@@ -1,0 +1,10 @@
+; Simple arithmetic example
+; Calculates: (10 + 5) * 2
+
+PUSH 10
+PUSH 5
+ADD
+PUSH 2
+MUL
+PRINT
+HALT
