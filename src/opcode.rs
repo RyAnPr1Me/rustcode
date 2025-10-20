@@ -91,6 +91,7 @@ impl OpCode {
     }
     
     /// Check if opcode requires an operand
+    #[allow(dead_code)]
     pub fn has_operand(self) -> bool {
         matches!(self, OpCode::Push | OpCode::Jump | OpCode::JumpIf | 
                       OpCode::JumpIfNot | OpCode::Call | OpCode::Load | OpCode::Store)

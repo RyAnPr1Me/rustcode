@@ -286,11 +286,13 @@ impl VM {
     }
     
     /// Get the current stack for debugging
+    #[allow(dead_code)]
     pub fn stack(&self) -> &[Value] {
         &self.stack
     }
     
     /// Check if VM has halted
+    #[allow(dead_code)]
     pub fn is_halted(&self) -> bool {
         self.halted
     }

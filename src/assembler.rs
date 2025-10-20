@@ -19,7 +19,7 @@ impl Assembler {
         let mut bytecode = Vec::new();
         
         // First pass: collect labels
-        for (_line_num, line) in source.lines().enumerate() {
+        for line in source.lines() {
             let line = line.trim();
             if line.is_empty() || line.starts_with(';') {
                 continue;
@@ -69,7 +69,7 @@ impl Assembler {
         match opcode {
             OpCode::Push => {
                 // 1 byte opcode + value encoding
-                Ok(1 + self.estimate_value_size(args.get(0).ok_or("PUSH requires an argument")?))
+                Ok(1 + self.estimate_value_size(args.first().ok_or("PUSH requires an argument")?))
             }
             OpCode::Jump | OpCode::JumpIf | OpCode::JumpIfNot | OpCode::Call => {
                 Ok(3) // 1 byte opcode + 2 bytes address
@@ -157,9 +157,9 @@ impl Assembler {
             let rest = line[pos..].trim();
             
             // Check if argument is a quoted string
-            if rest.starts_with('"') {
+            if let Some(stripped) = rest.strip_prefix('"') {
                 // Find the closing quote
-                if let Some(end_quote) = rest[1..].find('"') {
+                if let Some(end_quote) = stripped.find('"') {
                     let arg = rest[..=end_quote + 1].to_string();
                     Ok((instruction, vec![arg]))
                 } else {
